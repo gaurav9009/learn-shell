@@ -1,0 +1,41 @@
+type: custom:stack-in-card
+mode: vertical
+cards:
+  - type: custom:mushroom-person-card
+    entity: person.jon
+    use_entity_picture: true
+    hide_name: true
+    layout: horizontal
+  - type: conditional
+    conditions:
+      - entity: sensor.iphone14pro_battery_state
+        state: Charging
+        card:
+        type: custom:mushroom-entity-card
+        entity: sensor.iphone14pro_battery_level
+        layout: horizontal
+        name: 14 Pro
+        icon_color: amber
+        icon: mdi:battery-charging-medium
+  - type: conditional
+    conditions:
+      - entity: sensor.iphone14pro_battery_state
+        state: Not Charging
+        card:
+        type: custom:mushroom-entity-card
+        entity: sensor.iphone14pro_battery_level
+        name: 14 Pro
+        layout: horizontal
+        icon_color: green
+        icon: mdi:battery-arrow-down
+  - type: conditional
+    conditions:
+      - entity: sensor.iphone14pro_battery_state
+        state: Full
+        card:
+  - type: custom:mushroom-entity-card
+    entity: sensor.iphone14pro_battery_level
+    name: 14 Pro
+    layout: horizontal
+    icon_color: white
+    icon: mdi:battery-high
